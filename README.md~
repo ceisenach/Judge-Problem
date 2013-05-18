@@ -1,0 +1,24 @@
+(c) 2013 Carson Eisenach, Caroline Miller, David Stevens, Victor Luo
+
+Code created for Williams College MATH 398 - Independent Study in Linear Programming
+
+The code here depends upon CPLEX and python package PuLP (v 1.5.3) and Python 2.7
+
+
+
+A Integer Linear Programming Model using PuLP, a LP modelling interface written in Python
+and used in conjunction with either CPLEX or GLPK, to solve "The Judge Problem"
+
+--------------- THE JUDGE PROBLEM -----------------
+The judge problem is given as follows: you have a debate tournament among 16
+teams.  In each round, groups of 4 teams compete with each other, each group
+is judged by 3 judges.  The tournament consists of 5 rounds and each team
+plays each other team once.  The assignment of judges to groups of teams is
+subject to the following constraints: a judge may see any individual team at 
+most once and any pair of judges can work together at most twice.
+
+There are numerous different approaches that we can try to arrive at a solution
+of course there is the traditional brute force approach, but we can also
+try other things such as meet in the middle and optimizations such as
+fixing a given round.  We also want to be able to find the best solution
+on a given schedule.
