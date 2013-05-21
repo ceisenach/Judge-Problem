@@ -34,6 +34,22 @@ def topThreeAccordingToMetric(schedules,metric) :
 		topThree = checkAndInsert(topThree,s,ranking)
 	return topThree
 
+def lowestAccordingToMetric(schedules,metric) :
+	lowest = sys.maxint
+	for s in schedules :
+		srank = metric(s)
+		if srank < lowest :
+			lowest = srank
+	return lowest
+
+def highestAccordingToMetric(schedules,metric) :
+	highest = -sys.maxint-1
+	for s in schedules :
+		srank = metric(s)
+		if srank > highest :
+			highest = srank
+	return highest
+
 def printSchedule(schedule) :
 	for k,thisRound in enumerate(schedule):
 		print "Round Number " + str(k) +" :\n"
@@ -64,6 +80,12 @@ def main(argv) :
 	for i,(schedule,rank) in enumerate(fairTopThree) :
 		print "Fair Schedule " + str(i) + " with rank " + str(rank) + " and rank " + str(rankAccordingToExcitingMetric(schedule)) + " according to the exciting metric \n"
 		printSchedule(schedule)
+
+	#print max and min
+	print "Highest according to exciting metric " + str(highestAccordingToMetric(schedules,rankAccordingToExcitingMetric))
+	print "And lowest " + str(lowestAccordingToMetric(schedules,rankAccordingToExcitingMetric))
+	print "Highest according to fair metric " + str(highestAccordingToMetric(schedules,rankAccordingToFairMetric))
+	print "And lowest " + str(lowestAccordingToMetric(schedules,rankAccordingToFairMetric))
 
 if __name__ == "__main__":
    main(sys.argv[1:])
